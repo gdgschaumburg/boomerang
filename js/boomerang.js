@@ -11,16 +11,17 @@ var boomerang = angular.module('gdgBoomerang', ['ngSanitize'])
 boomerang.factory('Config',function(){
     return {
         //modify these
-        'name'          : 'GDG Fresno',
-        'id'            : '114769570436363155784',
-        'google_api'    : 'enter_your_own',
-        'pwa_id'        : '5846413253595166705', //picasa web album id, must belong to google+ id above
+        'name'          : 'GDG Schaumburg',
+        'id'            : '111851281564260689455',
+        'google_api'    : 'AIzaSyDW9D2LXhT32NcZKgdgQVzob0L3-zFUAH8',
+        'pwuser_id'     : '108212080931171956641',
+        'pwa_id'        : '5904309212560849233', //picasa web album id, must belong to google+ id above
         'cover' : {
-            title : 'DevFest Fresno',
-                subtitle : 'The largest Google Developer Conference in the Central Valley',
+            title : 'GDG Schaumburg',
+                subtitle : 'Come share and learn whats happening in Google technology in Chicagoland.',
                 button : {
-                    text : 'Register',
-                    url : 'https://devfestfresno.eventbrite.com'
+                    text : 'Check us out on Google+',
+                    url : 'https://plus.google.com/b/111851281564260689455/111851281564260689455/posts'
                 }
         }
     }
@@ -170,7 +171,7 @@ boomerang.controller("PhotosControl", function( $scope, $http, Config ) {
     $scope.$parent.activeTab = "photos";
     $scope.photos = [];
 
-    var pwa = 'https://picasaweb.google.com/data/feed/api/user/'+Config.id+'/albumid/'+Config.pwa_id+'?access=public&alt=json-in-script&kind=photo&max-results=20&fields=entry(title,link/@href,summary,content/@src)&v=2.0&callback=JSON_CALLBACK';
+    var pwa = 'https://picasaweb.google.com/data/feed/api/user/'+Config.pwuser_id+'/albumid/'+Config.pwa_id+'?access=public&alt=json-in-script&kind=photo&max-results=20&fields=entry(title,link/@href,summary,content/@src)&v=2.0&callback=JSON_CALLBACK';
     $http.jsonp(pwa).
         success(function(d){
             var p = d.feed.entry;
